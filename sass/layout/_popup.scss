@@ -1,0 +1,117 @@
+.popup {
+    position: fixed;
+    z-index: 300;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba($color-black, .8);
+
+
+
+    &__content {
+        @include centerItem;
+        display: table;
+        overflow: hidden;
+        width: 75%;
+        transform: translate(-50%, -50%) scale(.3);
+        transition: all .4s .2s;
+        border-radius: 3px;
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        background-color: $color-white;
+
+        @include respond(phone) {
+            width: 70%;
+        }
+
+        @include respond(tab-land) {
+            width: 90%;
+        }
+
+    }
+
+    &__left {
+        display: table-cell;
+        width: 33.3333%;
+
+        @include respond(tab-port-2) {
+            display: none;
+        }
+
+    }
+
+    &__right {
+        display: table-cell;
+        vertical-align: middle;
+        width: 66.6667%;
+        padding: 3rem 5rem;
+
+
+        @include respond(tab-land) {
+            padding: 1rem 3rem;
+        }
+
+        @include respond(phone) {
+            width: 100%;
+        }
+
+
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+
+        &-1 {
+            @include respond(phone) {
+                display: none;
+            }
+        }
+
+        @include respond(phone) {}
+    }
+
+    &__text {
+        hyphens: auto;
+        margin-bottom: 4rem;
+        font-size: 1.4rem;
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid $color-grey-light-2;
+
+        @include respond(tab-port-2) {
+            column-count: 1;
+        }
+
+    }
+
+    &:target {
+        opacity: 1;
+        visibility: visible
+    }
+
+    &__close {
+        display: inline-block;
+        position: absolute;
+        text-decoration: none;
+        transition: all .2s;
+        top: 2.5rem;
+        right: 2.5rem;
+        line-height: 1;
+        font-size: 3rem;
+        color: $color-grey-dark-3;
+
+        &:hover {
+            color: $color-primary;
+
+        }
+    }
+
+    &:target &__content {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
